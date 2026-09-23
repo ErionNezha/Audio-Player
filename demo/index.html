@@ -1,0 +1,87 @@
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<!DOCTYPE html>
+<html lang="sq">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<title>Audio Player — Erion Nezha</title>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="src/app.css">
+		<style>
+			.pagehead{text-align:center;color:#5a3b3b;font-family:'Segoe UI',system-ui,sans-serif;margin:18px 0 4px}
+			.pagehead h1{font-size:1.4rem;letter-spacing:1px}
+			.pagehead p{font-size:.9rem;opacity:.8}
+			.pagefoot{text-align:center;color:#8a6a6a;font-family:'Segoe UI',system-ui,sans-serif;font-size:.82rem;margin:14px 0 22px}
+			.pagefoot strong{color:#5a3b3b}
+		</style>
+	</head>
+	<body>
+		<div class="pagehead">
+			<h1>🎵 AUDIO PLAYER</h1>
+			<p>Shtyp ▶ për të luajtur — dy këngë shembull të vërteta</p>
+		</div>
+		<div class="audio-player" id="skin">
+			<div class="holder">
+				<div class="cover">
+					<img src="assets/cover.png" alt="Kopertina">
+				</div>
+				<div class="audio-wrapper" id="player-container" href="javascript:;">
+					<audio id="player" preload="metadata">
+						<source src="assets/sample.weba" type="audio/webm">
+					</audio>
+				</div>
+				<div class="player-controls scrubber">
+					<div>
+						<div>
+							<p class="title"></p>
+						</div>
+						<div class="range">
+							<input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
+						</div>
+						<br>
+						<span class="time start-time"></span>
+						<span class="time end-time"></span>
+						<br>
+						<div class="ctrl">
+							<div>
+								<a href="#prev" class="ctrl_btn " id="prev" title="Kënga paraardhëse"><i class="fa fa-arrow-left" ></i></a>
+								<span id="play-btn" class="fa fa-play " title="Luaj / Ndalo"></span>
+								<a href="#next" class="ctrl_btn " id="next" title="Kënga pasuese"><i class="fa fa-arrow-right" ></i></a>
+							</div>
+							<div class="volumeControl">
+								<div class="wrapper" title="Volumi">
+									<i class="fa fa-volume-up"></i>
+									<span class="outer">
+										<span class="inner"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pagefoot">Krijuar nga <strong>Erion Nezha</strong> — © 2026</div>
+		<script type="text/javascript" src="assets/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="src/app.js"></script>
+		<script>
+		/* Fallback: nëse font-awesome (CDN) nuk ngarkohet, përdor simbole unicode */
+		(function(){
+			function faOk(){ try{ return document.fonts && document.fonts.check('16px "FontAwesome"'); }catch(e){ return false; } }
+			if(faOk()) return;
+			var playBtn=document.getElementById('play-btn');
+			function paint(){
+				playBtn.textContent = playBtn.classList.contains('fa-pause') ? '⏸' : '▶';
+				playBtn.style.fontFamily='inherit';
+			}
+			document.querySelectorAll('#prev i').forEach(function(el){ el.textContent='⏮'; el.style.fontFamily='inherit'; });
+			document.querySelectorAll('#next i').forEach(function(el){ el.textContent='⏭'; el.style.fontFamily='inherit'; });
+			document.querySelectorAll('.fa-volume-up').forEach(function(el){ el.textContent='🔊'; el.style.fontFamily='inherit'; });
+			new MutationObserver(paint).observe(playBtn,{attributes:true,attributeFilter:['class']});
+			paint();
+		})();
+		</script>
+	</body>
+</html>
