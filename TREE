@@ -1,0 +1,27 @@
+Audio-Player/
+  demo/
+  demo/src/
+  demo/src/app.js
+  demo/src/app.css
+  demo/assets/
+  demo/assets/jquery/
+  demo/assets/jquery/jquery.min.js
+  demo/assets/cover.png
+  demo/assets/play-button.svg
+  demo/assets/pause-round-button.svg
+  demo/assets/sample.weba
+  demo/assets/sample2.weba
+  demo/index.html
+  original/
+  original/src/
+  original/src/app.js
+  original/src/app.css
+  original/assets/
+  original/assets/jquery/
+  original/assets/jquery/jquery.min.js
+  original/assets/cover.png
+  original/assets/play-button.svg
+  original/assets/pause-round-button.svg
+  original/assets/sample.weba
+  original/assets/sample2.weba
+  original/Projecto-Audio-Player.html
